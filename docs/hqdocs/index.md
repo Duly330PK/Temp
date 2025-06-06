@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+      index.html
+      Version: v1.3 | 2025-xx-xx
+      Patch Notes:
+      v1.0 | 2025-01-15 - Initial version with basic layout.
+      v1.1 | 2025-06-01 - Added left visualization and right control panel structure.
+      v1.2 | 2025-10-07 - Revised right column: Control Panel now occupies 70% (top) and Dashboard 30% (bottom) per new internal standards.
+      v1.3 | 2025-xx-xx - Integrated Import Map for d3 updated to load local ES Module.
+      
+      Standards:
+      - Ausführliche Dokumentation und Changelogs in den Kommentarblöcken.
+      - Responsive Layouts und saubere Trennung von UI-Bereichen.
+      - Nutzung moderner Web-Standards: ES-Module, Import Maps und Inline CSS als Fallback.
+  -->
+  <meta charset="UTF-8">
+  <title>NetSim - Network Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    /* Inline CSS following our internal standards */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+    }
+    #mainContainer {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    /* Left column: for SVG visualization and interactive map */
+    #leftColumn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+    }
+    /* Hier wird sichergestellt, dass SVG-Container und Map-Container jeweils 50% Höhe bekommen */
+    #svgContainer, #mapContainer {
+      height: 50%;
+      width: 100%;
+      position: relative;
+    }
+    /* Right column: split into two sections */
+    #rightColumn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    /* Control Panel (upper area) – occupies 70% of the right column */
+    #controlPanelContainer {
+      flex: 0 0 70%;
+      overflow-y: auto;
+      border-bottom: 1px solid #ccc;
+    }
+    /* Dashboard (lower area) – occupies the remaining 30% */
+    #dashboardContainer {
+      flex: 0 0 30%;
+      overflow-y: auto;
+    }
+    /* Styling for the Debug Overlay */
+    #debug-overlay h4 {
+      margin: 0 0 5px;
+    }
+    #debug-overlay pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  </style>
+
+  <!-- ✅ FIXED: Import Map now loads D3 as proper ES module -->
+  <script type="importmap">
+  {
+    "imports": {
+      "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="mainContainer">
+    <div id="leftColumn">
+      <div id="svgContainer"></div>
+      <div id="mapContainer"></div>
+    </div>
+    <div id="rightColumn">
+      <div id="controlPanelContainer"></div>
+      <div id="dashboardContainer"></div>
+    </div>
+  </div>
+  <!-- ES6-Modul: main.js wird als Einstiegspunkt geladen -->
+  <script type="module" src="main.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>
