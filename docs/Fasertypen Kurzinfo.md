@@ -1,0 +1,6 @@
+- **Steckertyp:** SC/APC (grün, 8° Winkel – minimiert Reflexion)
+- **Standard-Fasertypen:**
+  - G.652.D – Standard-Singlemode
+  - G.654.E – Long-Haul / unter Wasser
+  - G.657.A/B – Biegeunempfindlich, für FTTH
+- **Spleißtechnik:** Fusion-Spleiß mit Pigtails oder Direkt-Spleiß
